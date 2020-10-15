@@ -1,9 +1,9 @@
 <template>
   <div v-show="path !== '/home'" id="Footer">
     <div class="talk">
-      <img class="wx" src="../../../assets/images/wx.jpg" alt="" />
+      <!-- <img class="wx" src="../../../assets/images/wx.jpg" alt="" /> -->
       <p>
-        &copy; codelei.cn 版权所有 Blog由Vue,nodejs驱动.
+        &copy; 版权所有 Blog由Vue驱动.
         <a href="http://www.beian.miit.gov.cn"></a>
       </p>
       <p><img src="../../../assets/images/beianicon.png" alt="" /></p>

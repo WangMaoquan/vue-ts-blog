@@ -1,84 +1,53 @@
 <template>
   <div id="menuLink">
-    <a
-      v-for="(item, index) in menuItems"
-      :key="index"
-      @click="toPath(item.path)"
-    >
-      <template>
-        {{ switchIcon(item.iconName) }}
-      </template>
+    <a v-for="item in menuItems" :key="item.name" @click="toPath(item.path)">
+      <i :class="`iconfont ${item.icon}`"></i>
       {{ item.name }}
     </a>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, h, ref } from 'vue';
-import {
-  HomeOutlined,
-  YoutubeOutlined,
-  GithubOutlined,
-  UserOutlined,
-  FileTextOutlined,
-  HeartOutlined,
-  CameraOutlined
-} from '@ant-design/icons-vue';
-import { useRouter } from 'vue-router';
+interface MenuItem {
+  name: string;
+  icon: string;
+  path: string;
+}
 
+import { toPathFunc } from '../../../../types';
+import { defineComponent, Ref, ref } from 'vue';
+import { useMyRouter } from '@/utils/useMyRouter';
 export default defineComponent({
-  name: 'myMenu', // Do not use built-in or reserved HTML elements as component id: menu 
+  name: 'myMenu', // Do not use built-in or reserved HTML elements as component id: menu
   setup() {
-    const router = useRouter()
-    const menuItems = ref([
-      { name: '首页', iconName: 'HomeOutlined', path: '/' },
+    const { toPath } = useMyRouter();
+    const menuItems: Ref<MenuItem[]> = ref([
+      { name: '首页', icon: 'icon-shouye1-copy', path: '/' },
       {
         name: '文章列表',
-        iconName: 'YoutubeOutlined',
+        icon: 'icon-16pxwenzhang',
         path: '/article'
       },
-      { name: '云相册', iconName: 'CameraOutlined', path: '/photos' },
-      { name: '个人信息', iconName: 'UserOutlined', path: '/profile' },
-      { name: '留言板', iconName: 'FileTextOutlined', path: '/message' },
+      { name: '云相册', icon: 'icon-xiangce', path: '/photos' },
+      { name: '个人信息', icon: 'icon-guanyu', path: '/profile' },
+      { name: '留言板', icon: 'icon-liuyan', path: '/message' },
       {
         name: 'GitHub',
-        iconName: 'GithubOutlined',
+        icon: 'icon-git',
         path: 'https://github.com/WangMaoquan'
       },
-      { name: '登陆 / 注册', iconName: 'HeartOutlined', path: '/login' }
+      { name: '登陆 / 注册', icon: 'icon-denglu', path: '/login' }
     ]);
-
-    const switchIcon = (iconName: string) => {
-      return h(iconName);
-    };
-
-    const toPath = (path: string) => {
-      router.push(path);
-    }
 
     return {
       menuItems,
-      switchIcon,
       toPath
     };
-  },
-  components: {
-    HomeOutlined,
-    YoutubeOutlined,
-    GithubOutlined,
-    UserOutlined,
-    FileTextOutlined,
-    HeartOutlined,
-    CameraOutlined
   }
 });
 </script>
 
 <style lang="scss" scoped>
-@font-face {
-  font-family: 'codeleilei';
-  src: url('../../../../assets/font/2012DingYongKangYingBiKaiShuXinBan-2.ttf');
-}
 #menuLink {
   display: flex;
   height: 3rem;
@@ -99,4 +68,3 @@ export default defineComponent({
   }
 }
 </style>
-

@@ -43,16 +43,7 @@ export default defineComponent({
     watchEffect(() => {
       document.onclick = (e) => {
         const { className, tagName } = e.target as HTMLElement;
-        if (className === 'meun iconfont icon-caidan') {
-          store.commit('updateShow', true);
-        } else if (
-          className == 'MeunTab' ||
-          tagName.toLowerCase() == 'img' ||
-          className == 'ivu-list-item' ||
-          className == 'profile'
-        ) {
-          return;
-        } else {
+        if (className !== 'meun iconfont icon-toggle') {
           store.commit('updateShow', false);
         }
       };
@@ -73,10 +64,11 @@ export default defineComponent({
     const isLoadingShow = computed(() => {
       return store.state.LoadingShow
     })
-    
+
     const isShow = computed(() => {
       return store.state.isShow
     })
+
 
     const currnetRouteNameIsNotHome = computed(() => {
       return route.name !== 'home'

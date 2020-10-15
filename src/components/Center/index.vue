@@ -35,7 +35,7 @@
       </i>
     </div>
     <div class="talk-method">
-      <i class="iconfont icon-weixin"> : w92626a</i>
+      <i class="iconfont icon-weixin-copy"> : w92626a</i>
       <i class="iconfont icon-qq"> : 1782976211</i>
     </div>
   </div>
@@ -54,18 +54,18 @@ export default defineComponent({
       { name: ' Login', icon: 'iconfont icon-touxiang', path: '/login' },
       {
         name: ' Article-List',
-        icon: 'iconfont icon-wenzhang',
+        icon: 'iconfont icon-16pxwenzhang',
         path: '/article'
       },
       {
         name: ' LeaveMessage',
-        icon: 'iconfont icon-liuyan2',
+        icon: 'iconfont icon-liuyan',
         path: '/message'
       },
       { name: ' Photos', icon: 'iconfont icon-xiangce', path: '/photos' },
       {
         name: ' Github',
-        icon: 'iconfont icon-GitHub',
+        icon: 'iconfont icon-git',
         path: 'https://github.com/WangMaoquan'
       }
     ]);

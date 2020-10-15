@@ -15,32 +15,32 @@
         <i class="iconfont icon-weixin">: w92626a</i>
       </a-list-item>
       <a-list-item>
-        <i @click="goPath('/home')" class="iconfont icon-shouyex">
+        <i @click="toPath('/home')" class="iconfont icon-shouyex">
           首页</i
         >
       </a-list-item>
       <a-list-item>
-        <i @click="goPath('/photos')" class="iconfont icon-biaoti">
+        <i @click="toPath('/photos')" class="iconfont icon-biaoti">
           云相册</i
         >
       </a-list-item>
       <a-list-item>
-        <i @click="goPath('/message')" class="iconfont icon-liuyan2">
+        <i @click="toPath('/message')" class="iconfont icon-liuyan2">
           留言板</i
         >
       </a-list-item>
       <a-list-item>
-        <i @click="toGithub"
-          ><GithubOutlined /> Github</i
+        <i @click="toGithub" class="iconfont icon-git"
+          > Github</i
         >
       </a-list-item>
       <a-list-item>
-        <i @click="goPath('/article')" class="iconfont icon-wenzhang">
+        <i @click="toPath('/article')" class="iconfont icon-wenzhang">
           文章列表</i
         >
       </a-list-item>
       <a-list-item>
-        <i @click="goPath('/profile')" class="iconfont icon-touxiang">
+        <i @click="toPath('/profile')" class="iconfont icon-touxiang">
           个人信息</i
         >
       </a-list-item>
@@ -52,21 +52,14 @@
 </template>
 
 <script lang="ts">
-import {
-  GithubOutlined
-} from '@ant-design/icons-vue';
 import { computed, defineComponent, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useMyRouter } from '@/utils/useMyRouter';
 import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'mainInfo',
-  components: {
-    GithubOutlined
-  },
   setup() {
-
-    const router = useRouter();
+    const { toPath } = useMyRouter();
     const store = useStore();
 
     const isShow = computed(() => {
@@ -77,23 +70,20 @@ export default defineComponent({
       location.href = 'https://github.com/WangMaoquan';
     }
 
-    const goPath = (path: string) => {
-      router.push(path);
-    }
 
     const LoginOrRegister = () => {
       if (localStorage.getItem('user')) {
-        goPath('/login');
+        toPath('/login');
         return;
       }
-      goPath('/register')
+      toPath('/register')
     }
 
     return {
-      goPath,
+      toPath,
       isShow,
       toGithub,
-      LoginOrRegister
+      LoginOrRegister,
     }
   }
 })

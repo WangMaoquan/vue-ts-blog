@@ -1,50 +1,56 @@
 <template>
   <div id="logocontent">
     <div class="logo_name">
-      <i class="meun iconfont icon-caidan"></i>
+      <i class="meun iconfont icon-toggle" @click="showMenu"></i>
       <img
-        v-show="isShow"
+        v-show="isHome"
         src="../../../../assets/images/logo.jpg"
         alt
       />
-      <p v-show="isShow">DECADE</p>
+      <p v-show="isHome">DECADE</p>
       <i
-        @click="goCategory"
-        class="search iconfont icon-search"
+        @click="toPath('./category')"
+        class="search iconfont icon-search1"
       ></i>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, toRefs } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
+import { useStore } from 'vuex';
 export default defineComponent({
   name: "logo",
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const isShow = computed(() => {
+    const isHome = computed(() => {
       return route.name !== 'home'
     })
-    const goCategory = () => {
-      router.push('./category')
+    const toPath = (pathName: string) => {
+      router.push(pathName)
     }
 
+    const store = useStore();
+
+    const { isShow } = toRefs(store.state)
+    // console.log(isShow)
+    const showMenu = () => {
+      store.commit("updateShow", !isShow.value)
+    }
+
+
     return {
-      isShow,
-      goCategory
+      isHome,
+      toPath,
+      showMenu
     }
   }
 });
 </script>
 
 <style lang="scss" scope>
-@font-face {
-  font-family: '../../../../assets/font/Oh-Chewy-2.ttf';
-  src: url('../../../../assets/font/Oh-Chewy-2.ttf');
-}
 #logocontent {
   .logo_name {
     display: flex;
@@ -59,7 +65,6 @@ export default defineComponent({
       // font-weight: bold;
       color: lightgreen;
       animation: triggerColor 7s infinite alternate;
-      font-family: '../../../../assets/font/Oh-Chewy-2.ttf';
     }
     img {
       width: 3.5rem;

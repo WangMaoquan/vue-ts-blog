@@ -2,7 +2,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    isshow: false,
+    isShow: false,
     fontColor: false,
     Color: '#333',
     LoadingShow: false,
@@ -11,7 +11,7 @@ export default createStore({
   },
   mutations: {
     updateShow(state, payload) {
-      state.isshow = payload;
+      state.isShow = payload;
     },
     updatefont(state, payload) {
       state.fontColor = payload;
@@ -19,7 +19,7 @@ export default createStore({
     },
     LoadingTitleChange(state, payload) {
       state.LoadingTitle = payload.title;
-      state.LoadingShow = payload.isshow;
+      state.LoadingShow = payload.isShow;
     }
   },
   actions: {},
