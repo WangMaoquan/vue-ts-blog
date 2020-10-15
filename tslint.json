@@ -1,0 +1,35 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  },
+  "rules": {
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "no-consecutive-blank-lines": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "quotemark": [true, "single"],
+    // 一个参数没有必要有括号
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    // 限制一行最大长度
+    "max-line-length": [true, 120],
+    // 行尾必须有分号
+    "semicolon": [true, "always"],
+    // 限制对象、数组、解构赋值等的最后一项末尾是否需要逗号
+    "trailing-comma": [true, {
+      "singleline": "never",
+      "multiline": {
+        "objects": "never",
+        "arrays": "never",
+        "functions": "never",
+        "typeLiterals": "ignore"
+      }
+    }]
+  }
+}
