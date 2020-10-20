@@ -1,0 +1,1 @@
+export type InstallDirectivesFunc = (app: App) => App;

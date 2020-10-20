@@ -30,6 +30,8 @@
         "functions": "never",
         "typeLiterals": "ignore"
       }
-    }]
+    }],
+    "no-unused-expression": false, // 这样就可以使用 true && (let a = 1); 这样的
+    "prefer-for-of": false      // 这样可以使用for循环
   }
 }

@@ -1,0 +1,1 @@
+export type InstallAntdVueComponentFunc = (app: App) => App;

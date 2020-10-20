@@ -1,0 +1,1 @@
+export type toPathFunc = (pathName: string) => void;

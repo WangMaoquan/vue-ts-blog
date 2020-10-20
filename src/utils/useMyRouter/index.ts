@@ -1,5 +1,5 @@
 import { useRoute } from 'vue-router';
-import { toPathFunc } from '@/types';
+import { toPathFunc } from './types';
 import { useRouter } from 'vue-router';
 
 const useMyRouter = () => {
